@@ -9,37 +9,51 @@ and open the template in the editor.
         <title>Welcome to Social Network Extractor!</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="Welcome.css"/>
     </head>
     <body>
-        <form>
-            <p>Welcome to Social Network Annotator. This tool annotates named entities and places in a book,
-                <br> and extracts and visualizes social networks as they develop over the course of the book.</p>
-			<p>Before we start annotating, please fill in the title and author of the book, 
-                            and choose the book you want to work with. </p>
-			<p>Book Title: <input id="t" title="title" name="title" size="30" type="text" />&nbsp;
-                     
-			<p>Author: <input id="a" title="author" name="author" size="30" type="text" />
-                      
-                        <p>Select the book you want to annotate:</p>
-                        <p><input id="lord" type="radio" name="lord" value="lord"> Lord of the Flies<br>
-                        <input id="treasure" type="radio" name="treasure" value="treasure"> Treasure Island</p>
-                        <button onclick="getInput" type='button'>Submit</button>
-		</form>
-        
-		<script>
-			    function getInput() {
-			    var titleField = document.getElementById('t').value;
-			    var authorField = document.getElementById('a').value;
-                            if(document.getElementById('lord').checked) {
-                                    var bookField = document.getElementById('lord').value;
-                                }else if(document.getElementById('treasure').checked) {
-                                    var bookField = document.getElementById('treasure').value;
-                                }
-			    }
-                            
-                            
-			
-		</script>
+        <div class="contents">
+            <form>
+                <h1>Welcome to Social Network Extractor!</h1>
+                <p>This tool annotates named entities and places in a book,
+                    <br> and extracts and visualizes character networks as they develop over the course of the book.</p>
+                
+                <p>Select the book you want to work with:</p>
+                <p><input id="lord" type="radio" name="book" value="lord"/><label for="lord">Lord of the Flies</label>
+                    <input id="treasure" type="radio" name="book" value="treasure"/><label for="treasure">Treasure Island</label></p>
+                <p>Do you want to be asked for corrections during processing? This will improve the outcome. If you choose "no" here,<br/>
+                the tool will try its best, but the results will not be as good.</p>
+                <p><input id="yes" type="radio" name="check" value="yes"/><label for="yes">Yes</label>
+                    <input id="no" type="radio" name="check" value="no"/><label for="no">No</label></p>
+                <button onclick="getInput" type='button'>Submit</button>
+            </form>
+        </div>
+        <script>
+            function getInput() {
+                //var titleField = document.getElementById('t').value;
+                //var authorField = document.getElementById('a').value;
+                if (document.getElementById('lord').checked) {
+                    var bookField = document.getElementById('lord').value;
+                } else if (document.getElementById('treasure').checked) {
+                    var bookField = document.getElementById('treasure').value;
+                }
+                if (document.getElementById('yes').checked) {
+                    var bookField = document.getElementById('yes').value;
+                } else if (document.getElementById('no').checked) {
+                    var bookField = document.getElementById('no').value;
+                }
+            }
+            
+           // <p>Before we start annotating, please fill in the title and author of the book, 
+             //       and choose the book you want to work with. </p>
+               // <p>Book Title: <input id="t" title="title" name="title" size="30" type="text" />&nbsp;
+
+                //<p>Author: <input id="a" title="author" name="author" size="30" type="text" />
+
+
+
+
+        </script>
     </body>
 </html>
 
