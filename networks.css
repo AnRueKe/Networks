@@ -1,0 +1,16 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16.06.2016, 13:20:06
+    Author     : Sarah Dänel
+*/
+
+html, body {font-family: 'Helvetica'; font-size: 16px; margin: 15px}
+h1 {font-size: 25px; line-height: 28px; font-weight: bold;}
+h2 { font-size: 20px; margin: 0 0 16px; line-height: 22px; font-weight: normal;}
+h3 { font-size: 14px; font-weight: bold; margin: 0 0 11px 0; line-height: 17px; font-weight: bold;}
+p {font-size: 13px; margin: 0 0 9px; line-height: 19px;}
+p.teaser {padding: 10px; border: 1px solid black; width: 48%; border-radius: 5px; background-color: #f8f8f8; box-shadow: 1px 1px 2.5px 2.5px rgba(0,0,0,0.15);}
