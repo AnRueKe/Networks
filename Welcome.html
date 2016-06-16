@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Welcome to Social Network Extractor!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form>
+            <p>Welcome to Social Network Annotator. This tool annotates named entities and places in a book,
+                <br> and extracts and visualizes social networks as they develop over the course of the book.</p>
+			<p>Before we start annotating, please fill in the title and author of the book, 
+                            and choose the book you want to work with. </p>
+			<p>Book Title: <input id="t" title="title" name="title" size="30" type="text" />&nbsp;
+                     
+			<p>Author: <input id="a" title="author" name="author" size="30" type="text" />
+                      
+                        <p>Select the book you want to annotate:</p>
+                        <p><input id="lord" type="radio" name="lord" value="lord"> Lord of the Flies<br>
+                        <input id="treasure" type="radio" name="treasure" value="treasure"> Treasure Island</p>
+                        <button onclick="getInput" type='button'>Submit</button>
+		</form>
+        
+		<script>
+			    function getInput() {
+			    var titleField = document.getElementById('t').value;
+			    var authorField = document.getElementById('a').value;
+                            if(document.getElementById('lord').checked) {
+                                    var bookField = document.getElementById('lord').value;
+                                }else if(document.getElementById('treasure').checked) {
+                                    var bookField = document.getElementById('treasure').value;
+                                }
+			    }
+                            
+                            
+			
+		</script>
+    </body>
+</html>
+
