@@ -8,7 +8,7 @@ import edu.stanford.nlp.util.CoreMap;
 import java.util.*;
 
 /**
- * This class annotates a previously chosen and altered text file with the Stanford CoreNLP
+ * This class annotates a previously chosen and altered text file with the Stanford CoreNLP annotator
  * @author Sarah Dänel
  */
 public class Annotator {
