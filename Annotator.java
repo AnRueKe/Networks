@@ -8,8 +8,7 @@ import edu.stanford.nlp.util.CoreMap;
 import java.util.*;
 
 /**
- * This class annotates a previously chosen and altered text file.
- * (A output json/ xml (?) file is generated.)
+ * This class annotates a previously chosen and altered text file with the Stanford CoreNLP
  * @author Sarah Dänel
  */
 public class Annotator {
