@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,10 +19,12 @@ public class Book {
 	ArrayList<Chapter> chapters = new ArrayList<>();
 	String author;
 	String title;
+	CheckChars characters;
 	
 	
 	/**
-	 * default constructor
+	 * Class representing a book we want to process. Maybe from this class could all the other functionality spread
+	 * out. 
 	 */
 	public Book() {
 		
@@ -36,18 +37,12 @@ public class Book {
 	public Book(String fileName) {
 		try {
 		book = readFile(fileName);
+		Filter filter = new Filter("TI_Annotated.tsv");
+		characters = new CheckChars(filter, "CharacterList_TI.txt");
 		
-		//get title
-		
-		//Get author
-		
-		//split book string at chapter headings
-		//for each part create a chapter + put in array
 		String[] ch = book.split("(?=CHAPTER [a-zA-Z]+)"); //problem: other books: other separators, could appear in text etc
 
 		for (int i = 1; i < ch.length; i++) {
-		
-			
 				String[] lines = ch[i].split(System.getProperty("line.separator"));//split chapter in lines
 				Chapter chapter = new Chapter(ch[i]);//create a chapter
 				if(lines[1] == null) {
@@ -58,7 +53,6 @@ public class Book {
 				//System.out.println(chapter.getTitle());
 				chapter.setNumber(lines[0].substring(7).trim());//chapter number is in chapter heading line at the end
 				//System.out.println(chapter.getNumber());
-				
 				chapters.add(chapter);//add the chapter to the book's chapter list 
 		}
 		for (Chapter e : chapters) {
@@ -94,11 +88,11 @@ public class Book {
 	}
 	
 	public String getTitle() {
-		return "bla";
+		return title;
 	}
 	
 	public String getAuthor() {
-		return "bla";
+		return author;
 	}
 	
 	public static void main(String[] args)
