@@ -4,7 +4,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/**
+ * Klasse, die aus dem preprocessed File die Zeilen herausfiltert, die NNPs sind, und sie als Liste aus 
+ * Arrays (chapter ID, sentence ID  und lemma) abspeichert 
+ * @author anke
+ *
+ */
 public class Filter {
 	
 	ArrayList<String[]> nnps = new ArrayList();
