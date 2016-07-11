@@ -26,11 +26,11 @@ public class CountOccur {
          Map<String, Integer> counter = new HashMap<String, Integer>();
          for(int i = 0; i < nnps.size(); i++){ //go through list of characters
              String[] lemma = (String[]) nnps.get(i); //lemma from filtered nnps
-         
+             for(Entity entity : lemma){ //put lemmas into the hashmap
+                 counter.put(Entity.get(), 0); //initial 0
+             }
          while(read.readLine()!=null){ //reads the novel line by line
              /**
-              * create map (char,counter) with characters
-              * with counters initial 0
               * if characters from the filtered AND checked list matches those in the novel
               * counter i++
               */
