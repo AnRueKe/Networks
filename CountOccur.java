@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * zählt, wie oft die Person im Buch in jedem Kapitel erwähnt wird
  */
 package countoccur;
 import java.io.BufferedReader;
@@ -9,12 +7,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-/**
- *
- * zählt, wie oft die Person im Buch in jedem Kapitel erwähnt wird
- */
+
 public class CountOccur {
-    public CountOccur(Filter chars, String filename){
+    public CountOccur(){
     //stub
     }
     public CountOccur(Filter chars, String novel){
@@ -23,6 +18,7 @@ public class CountOccur {
          BufferedReader read = new BufferedReader(new FileReader(new File(novel)));
          String line;
          ArrayList nnps = chars.getNNPS();
+         Entity ent=new Entity();
          Map<String, Integer> counter = new HashMap<String, Integer>();
          for(int i = 0; i < nnps.size(); i++){ //go through list of characters
              String[] lemma = (String[]) nnps.get(i); //lemma from filtered nnps
@@ -32,11 +28,22 @@ public class CountOccur {
          while(read.readLine()!=null){ //reads the novel line by line
              /**
               * if characters from the filtered AND checked list matches those in the novel
-              * counter of given character +1
-              * next line i++
+              * counter +1
+              * next entity i++
               */
+             for(int j=0;j<counter.size();j++){ //go through hashmap bzw list of entities
+                 if(counter.values().contains(nnps.get(i))){
+                     counter.put(Entity.get(),counter.get(chars)+1);
+                     j++;
+                 }
+             }
          }
          }
+         /**
+          * give results into ouput
+          * reset value to 0
+          * (next chapter i++)?
+          */
 
         }catch (IOException e){
         System.out.println("wrong file");}
@@ -45,7 +52,6 @@ public class CountOccur {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
     }
     
 }
