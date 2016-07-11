@@ -32,7 +32,8 @@ public class CountOccur {
          while(read.readLine()!=null){ //reads the novel line by line
              /**
               * if characters from the filtered AND checked list matches those in the novel
-              * counter i++
+              * counter of given character +1
+              * next line i++
               */
          }
          }
