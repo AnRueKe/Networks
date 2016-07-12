@@ -20,13 +20,14 @@ public class CheckChars {
 	
 	private ArrayList check(Filter nnpList, String charListFile) {
 		try {
-			BufferedReader read = new BufferedReader(new FileReader(new File("charListFile")));
+			BufferedReader read = new BufferedReader(new FileReader(new File(charListFile)));
 			String line;
 			ArrayList nnps = nnpList.getNNPS();
 			
 			for(int i = 0; i < nnps.size(); i++)//go through list of filtered nnps
 			{
-				String[] lemma = (String[]) nnps.get(i);//lemma from filtered nnps
+				String[] nnpParts = (String[]) nnps.get(i);//lemma from filtered nnps
+				String lemma = nnpParts[2];
 				
 				while((line = read.readLine()) != null)//go through file of correct characters
 				{
@@ -34,7 +35,7 @@ public class CheckChars {
 					
 					for(String nickname : splitline)
 					{
-						if(nickname.equals(lemma[2]))//is the lemma of this nnp one of the nicknames in that line? 
+						if(nickname.equals(lemma))//is the lemma of this nnp one of the nicknames in that line? 
 						{
 						     if(!characters.contains(nnps.get(i)))
 						     {
@@ -46,7 +47,7 @@ public class CheckChars {
 				}
 			}
 		} catch (IOException e) {
-			System.out.println("File not found.");
+			System.out.println("File not found CheckChars.");
 		}
 		
 		return characters;
