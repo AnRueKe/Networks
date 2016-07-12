@@ -4,13 +4,61 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 16.06.2016, 13:20:06
+    Created on : 07.07.2016, 13:08:10
     Author     : Sarah Dänel
 */
 
-html, body {font-family: 'Helvetica'; font-size: 16px; margin: 15px}
+html, body {font-family: 'Helvetica'; font-size: 16px; margin-top: 15px; margin-bottom: 15px; margin-left: 100px; margin-right: 100px; background-color: aliceblue; border-color: black}
 h1 {font-size: 25px; line-height: 28px; font-weight: bold;}
 h2 { font-size: 20px; margin: 0 0 16px; line-height: 22px; font-weight: normal;}
 h3 { font-size: 14px; font-weight: bold; margin: 0 0 11px 0; line-height: 17px; font-weight: bold;}
 p {font-size: 13px; margin: 0 0 9px; line-height: 19px;}
-p.teaser {padding: 10px; border: 1px solid black; width: 48%; border-radius: 5px; background-color: #f8f8f8; box-shadow: 1px 1px 2.5px 2.5px rgba(0,0,0,0.15);}
+p.teaser {padding: 10px; width: 83.7%; background-color: white;}
+.standard-button {background-color: white; color: black; border: 2px solid black; border-radius: 3px;}
+.button {background-color: white; color: black; border: none;}
+/*  SECTIONS  */
+.section {
+	clear: both;
+	padding: 0px;
+	margin: 0px;
+}
+
+/*  COLUMN SETUP  */
+.col {
+	display: block;
+	float:left;
+	margin: 1% 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
+
+
+/*  GROUPING  */
+.group:before,
+.group:after {
+	content:"";
+	display:table;
+}
+.group:after {
+	clear:both;
+}
+.group {
+    zoom:1; /* For IE 6/7 */
+}
+
+/*  GRID OF TWO  */
+.span_2_of_3 {
+	width: 40%;
+        padding: 10px; background-color: white;
+}
+.span_1_of_3 {
+	width: 40%;
+        padding: 10px; background-color: white;
+}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+	.col { margin: 1% 0 1% 0%;}
+	.span_2_of_3, .span_1_of_3 { width: 100%; }
+}
+footer {display: block;}
