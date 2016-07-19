@@ -1,7 +1,7 @@
+
 /**
  * zählt, wie oft die Person im Buch in jedem Kapitel erwähnt wird
  */
-package countoccur;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -9,49 +9,64 @@ import java.io.IOException;
 import java.util.*;
 
 public class CountOccur {
-    public CountOccur(){
-    //stub
-    }
-    public CountOccur(Filter chars, String novel){
-        try{
-            //input of the novel
-         BufferedReader read = new BufferedReader(new FileReader(new File(novel)));
-         String line;
-         ArrayList nnps = chars.getNNPS();
-         Entity ent=new Entity();
-         Map<String, Integer> counter = new HashMap<String, Integer>();
-         for(int i = 0; i < nnps.size(); i++){ //go through list of characters
-             String[] lemma = (String[]) nnps.get(i); //lemma from filtered nnps
-             for(Entity entity : lemma){ //put lemmas into the hashmap
-                 counter.put(Entity.get(), 0); //initial 0
-             }
-         while(read.readLine()!=null){ //reads the novel line by line
-             /**
-              * if characters from the filtered AND checked list matches those in the novel
-              * counter +1
-              * next entity i++
-              */
-             for(int j=0;j<counter.size();j++){ //go through hashmap bzw list of entities
-                 if(counter.values().contains(nnps.get(i))){
-                     counter.put(Entity.get(),counter.get(chars)+1);
-                     j++;
-                 }
-             }
-         }
-         }
-         /**
-          * give results into ouput
-          * reset value to 0
-          * (next chapter i++)?
-          */
 
-        }catch (IOException e){
-        System.out.println("wrong file");}
+    ArrayList<String> allChars = new ArrayList();
+    HashMap<String, Integer> counter = new HashMap<String, Integer>();
+
+    public CountOccur() {
+        //stub
     }
+
+    public CountOccur(Filter nnpList, CheckChars entities) {
+        try {
+
+            String lemma = "";
+            ArrayList nnps = nnpList.getNNPS();
+            ArrayList realCharList = entities.getCheckedCharacters();
+            //System.out.println("chapID\tlemma");
+            for (int i = 0; i < nnps.size(); i++)//go through list of filtered nnps
+            {
+                String[] nnpParts = (String[]) nnps.get(i);//lemma from filtered nnps
+                String chapterID = nnpParts[0]; //chapterID
+                lemma = nnpParts[2];
+                //System.out.println(chapterID + " " + lemma);
+                //while reading each line --> +1 whenever same name occurs
+                //http://stackoverflow.com/questions/4820716/finding-repeated-words-on-a-string-and-counting-the-repetitions
+                counter.put(lemma, 0); // put all lemmas as keys with value initial 0
+            }
+            for (Map.Entry<String, Integer> entry : counter.entrySet()) { //go through entities
+
+                    Integer oldCount = counter.get(entry);
+                    if (oldCount == null) {
+                        oldCount = 0;
+                    }
+                    counter.put(lemma, oldCount + 1);
+                
+                //update values on each chapter
+                if (entry.getValue() != 0) { //only print occurrences
+                    System.out.println(entry.getKey() + "/" + entry.getValue());
+                }
+            }
+            // go through chapters
+            //if lemma equals 
+            //reset value to 0 when new chapter begins
+        } catch (Exception e) {
+            System.out.println("wrong file");
+        }
+    }
+
+    public HashMap getOccur() {
+        return counter;
+    }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Filter filteredChars = new Filter("LotF_Annotated.tsv");
+        CheckChars entities = new CheckChars(filteredChars, "LotFChars.txt");
+        CountOccur test = new CountOccur(filteredChars, entities);
+
     }
-    
+
 }
